@@ -1,0 +1,25 @@
+package algo;
+
+import generic.AlgorithmeAbstract;
+import generic.ProblemeAbstract;
+import generic.SolutionAbstract;
+
+public class RecuitSimule extends AlgorithmeAbstract {
+
+	public RecuitSimule(ProblemeAbstract probleme, SolutionAbstract solutionInitiale, int maxEvaluations) {
+		super(probleme, solutionInitiale, maxEvaluations);
+		// TODO Auto-generated constructor stub
+	}
+
+	public RecuitSimule(ProblemeAbstract probleme, SolutionAbstract solutionInitiale, int i, int maxEvaluations) {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	@Override
+	public boolean amelioreSolution() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,7 @@
+package algo;
+
+import generic.AlgorithmeAbstract;
+
+public class RecuitSimule extends AlgorithmeAbstract {
+
+}

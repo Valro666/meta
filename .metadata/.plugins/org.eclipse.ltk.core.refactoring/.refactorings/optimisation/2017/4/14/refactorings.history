@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;resSol&apos; in &apos;algo.RecuitSimule.ameliorerSolution()&apos; to &apos;evalSol&apos;&#x0D;&#x0A;- Original project: &apos;optimisation&apos;&#x0D;&#x0A;- Original element: &apos;algo.RecuitSimule.ameliorerSolution().resSol&apos;&#x0D;&#x0A;- Renamed element: &apos;resSol&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;resSol&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;algo{RecuitSimule.java[RecuitSimule~ameliorerSolution@resSol!1442!1490!1449!1454!D!0!false" name="evalSol" references="true" stamp="1491406687394" version="1.0"/>
+</session>

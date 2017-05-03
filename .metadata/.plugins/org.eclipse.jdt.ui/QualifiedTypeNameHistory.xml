@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="algorithmes.AlgorithmeBranchAndBound"/>
+<fullyQualifiedTypeName name="generic.SolutionPartielle"/>
+<fullyQualifiedTypeName name="algorithmes.ValeurAEtoile"/>
+<fullyQualifiedTypeName name="generic.SolutionAbstract"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="algogenetique.Fitness"/>
+<fullyQualifiedTypeName name="algogenetique.Individu"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+</qualifiedTypeNameHistroy>
