@@ -1,0 +1,16 @@
+
+public class Single {
+	private static volatile Single instance = null;
+
+	public final static Single getInstance() {
+		if (Single.instance == null) {
+			synchronized (Single.class) {
+				if (Single.instance == null) {
+					Single.instance = new Single();
+				}
+			}
+		}
+		return Single.instance;
+	}
+
+}

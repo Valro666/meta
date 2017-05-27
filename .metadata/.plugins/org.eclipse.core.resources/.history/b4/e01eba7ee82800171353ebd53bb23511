@@ -1,9 +1,0 @@
-package generic;
-
-public class TabouFiltreAttribut {
-
-	public TabouFiltreAttribut(int i) {
-		// TODO Auto-generated constructor stub
-	}
-
-}

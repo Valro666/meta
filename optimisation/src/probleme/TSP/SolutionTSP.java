@@ -69,8 +69,8 @@ public class SolutionTSP extends SolutionAbstract {
 	/**
 	 * methode de verification de solution.
 	 * <p>
-	 * verifie que les villes n'ont pas été dupliquées (on passe pas deux fois
-	 * par la meme ville)
+	 * verifie que les villes n'ont pas été dupliquées (on passe pas deux
+	 * fois par la meme ville)
 	 * 
 	 * @return true si solution valide
 	 */
@@ -118,8 +118,22 @@ public class SolutionTSP extends SolutionAbstract {
 	 * courante
 	 */
 	public List<SolutionAbstract> retourneVoisinage() {
+		List<SolutionAbstract> azer = new ArrayList<SolutionAbstract>();
 
-		throw new Error("TODO"); // TODO  a construire
+		SolutionAbstract e = new SolutionTSP(this);
+		
+
+		for (int z = 0; z < 100; z++) {
+			int i = (int) (Math.random() * this.listeVilles.size());
+			int j = (int) (Math.random() * this.listeVilles.size());
+
+			((SolutionTSP) e).inverse(i, j);
+			azer.add(e);
+		}
+
+		return azer;
+
+		// throw new Error("TODO"); // TODO a construire
 
 	}
 

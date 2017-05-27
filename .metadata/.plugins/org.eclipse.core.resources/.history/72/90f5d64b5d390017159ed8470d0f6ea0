@@ -1,0 +1,44 @@
+package affichage;
+
+import java.awt.Color;
+import java.awt.LayoutManager;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import projet.Monochro;
+
+public class Carre extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	JLabel[][] actu;
+	Monochro mono;
+	LayoutManager mana ;
+
+	public Carre(Monochro m) {
+		mono = m;
+
+		actu = new JLabel[mono.size()][mono.size()];
+
+		for (int x = 0; x < actu.length; x++) {
+			for (int y = 0; y < actu.length; y++) {
+				actu[x][y] = new JLabel();
+				actu[x][y].setText(mono.get(x, y) + "");
+				actu[x][y].setBackground(set(mono.get(x, y)));
+			}
+		}
+
+	}
+
+	public Color set(int i) {
+		if (i == 1) {
+			return Color.black;
+		}
+		return Color.white;
+	}
+
+}

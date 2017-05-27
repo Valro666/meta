@@ -1,0 +1,120 @@
+package projet;
+
+import java.util.Observable;
+
+public class Monochro extends Observable {
+
+	public int[][] matrice;
+
+	public Monochro(int n) {
+		matrice = new int[n][n];
+		remplir();
+	}
+
+	void modif(int x, int y, Monochro m) {
+		if (m.get(x, y) == 0) {
+			m.set(x, y, 1);
+		} else {
+			m.set(x, y, 0);
+		}
+	}
+
+	public Monochro aleration(int x, int y) {
+
+		Monochro m = new Monochro(size());
+
+		for (int i = 0; i < matrice.length; i++) {
+			for (int j = 0; j < matrice.length; j++) {
+				m.set(i, j, m.get(i, j));
+			}
+		}
+
+		int taille = 2;//limite(x, y);
+		modif(x, y, m);
+		modif(x + taille, y, m);
+		modif(x, y + taille, m);
+		modif(x + taille, y + taille, m);
+
+		return m;
+	}
+
+	public int size() {
+		return matrice.length;
+	}
+
+	public void remplir() {
+		for (int i = 0; i < matrice.length; i++) {
+			for (int j = 0; j < matrice.length; j++) {
+				if (Math.random() > 0.5) {
+					matrice[i][j] = 1;
+				} else {
+					matrice[i][j] = 0;
+				}
+			}
+		}
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public void maj(){
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public int get(int x, int y) {
+		return matrice[x][y];
+	}
+
+	public void set(int x, int y, int val) {
+		matrice[x][y] = val;
+	}
+
+	public int valeur() {
+		int tmp = 0;
+		for (int i = 0; i < matrice.length; i++) {
+			for (int j = 0; j < matrice.length; j++) {
+				tmp = tmp + val(i, j);
+			}
+		}
+		return tmp;
+	}
+
+	public int limite(int x, int y) {
+		int lim = size();
+
+		int lim1 = size() - x;
+		int lim2 = size() - y;
+
+		if (lim1 == 0) {
+			return 0;
+		}
+
+		if (lim2 == 0) {
+			return 0;
+		}
+
+		lim = lim1;
+		if (lim >= lim2) {
+			lim = lim2;
+		}
+
+		return lim;
+	}
+
+	public int val(int x, int y) {
+
+		int lim = limite(x, y);
+		int val = 0;
+		for (int i = 0; i < lim - 1; i++) {
+			if (matrice[x][y] == matrice[x + 1][y + 1]) {
+				if (matrice[x][y] == matrice[x][y + 1]) {
+					if (matrice[x][y] == matrice[x + 1][y]) {
+						val++;
+					}
+				}
+			}
+		}
+		return val;
+	}
+
+}

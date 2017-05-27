@@ -4,6 +4,7 @@ import generic.AlgorithmeAbstract;
 import generic.ProblemeAbstract;
 import generic.SolutionAbstract;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * principe de la méthode pour chaque iteration
  * <ul>
  * <li>recuperer les voisins
- * <li>pour chaque solution, regarder si elle est valide grace à la liste taboue
+ * <li>pour chaque solution, regarder si elle est valide grace à la liste
+ * taboue
  * <li>prendre la meilleure solution valide
  * <li>mettre à jour la liste taboue
  * </ul>
@@ -56,11 +58,28 @@ public class Tabou extends AlgorithmeAbstract {
 		// bloque la recherche de la solution)
 
 		// penser à utiliser
-		// 1) la méthode filtrer qui retourne la liste des solutions à conserver
+		// 1) la méthode filtrer qui retourne la liste des solutions à
+		// conserver
 		// 2) la methode chercherMeilleureSolution qui retourne la
 		// meilleure solution à partir d'une liste de solution
 
-		throw new Error("TODO"); // TODO  a completer
+		List<SolutionAbstract> voisin = this.solutionEnCours.retourneVoisinage();
+
+		List<SolutionAbstract> voisin2 = new ArrayList<SolutionAbstract>();
+
+		chercherMeilleureSolution(voisin);
+
+		for (SolutionAbstract v : voisin) {
+			if (tabou.accepter(v)) {
+				voisin2.add(v);
+				if (v != null)
+					tabou.update(v);
+			}
+		}
+		solutionEnCours = chercherMeilleureSolution(voisin2);
+		// this.tabou.accepter(voisin);
+
+		return false;
 
 	}
 
@@ -74,21 +93,35 @@ public class Tabou extends AlgorithmeAbstract {
 	 */
 	private SolutionAbstract chercherMeilleureSolution(List<SolutionAbstract> solutionsVoisines) {
 
-		throw new Error("TODO"); // TODO  a completer etudiants
+		// throw new Error("TODO"); // TODO a completer etudiants
+
+		SolutionAbstract sol = solutionsVoisines.get(0);
+		double val = this.problemeATraiter.evaluation(sol);
+
+		for (SolutionAbstract v : solutionsVoisines) {
+			this.problemeATraiter.evaluation(v);
+			if (val > this.problemeATraiter.evaluation(v)) {
+				val = this.problemeATraiter.evaluation(v);
+				sol = v;
+			}
+		}
+
+		return sol;
 
 	}
 
 	/**
-	 * utilise le filtre taboue pour retirer les solutions non considérées dans
-	 * la liste
+	 * utilise le filtre taboue pour retirer les solutions non considérées
+	 * dans la liste
 	 * 
 	 * @param solutionsVoisines
-	 *            liste de solutions à filtrer, parametre modifié par la méthode
+	 *            liste de solutions à filtrer, parametre modifié par la
+	 *            méthode
 	 */
 
 	private void filtrer(List<SolutionAbstract> solutionsVoisines) {
 
-		throw new Error("TODO"); // TODO  a completer
+		throw new Error("TODO"); // TODO a completer
 	}
 
 }

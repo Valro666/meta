@@ -95,7 +95,7 @@ public class AfficheTSP extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				greedy.ameliorerSolution();
 				solutionCourante = (SolutionTSP) greedy.getSolutionEnCours();
-				System.out.println(greedy.log());
+//				System.out.println(greedy.log());
 				repaint();
 			}
 		});

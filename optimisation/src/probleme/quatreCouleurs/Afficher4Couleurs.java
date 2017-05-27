@@ -72,6 +72,8 @@ public class Afficher4Couleurs extends JPanel {
 		panelBoutons.add(boutonRecuit, BorderLayout.CENTER);
 		JButton boutonTabou = creerBoutonTaboueAttribut();
 		panelBoutons.add(boutonTabou, BorderLayout.SOUTH);
+		JButton boutonTabou2 = creerBoutonTaboue();
+		panelBoutons.add(boutonTabou2, BorderLayout.EAST);
 		contenu.add(panelBoutons, BorderLayout.SOUTH);
 
 		// construction JFrame

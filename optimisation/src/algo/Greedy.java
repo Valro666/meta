@@ -45,10 +45,12 @@ public class Greedy extends AlgorithmeAbstract {
 			}
 		}
 
-		solutionEnCours = res;
+		
 
 		if (res == null)
 			return false;
+		
+		solutionEnCours = res;
 
 		return true;
 

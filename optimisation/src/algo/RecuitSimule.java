@@ -25,7 +25,7 @@ public class RecuitSimule extends AlgorithmeAbstract {
 	/**
 	 * variation de temperature par iteration
 	 */
-	public double DELTA_TEMPERATURE = 0.99;
+	public double DELTA_TEMPERATURE = 0.9999;
 
 	/**
 	 * la temperature qui décroit au cours du temps;
@@ -52,6 +52,22 @@ public class RecuitSimule extends AlgorithmeAbstract {
 		this.temperature = temperature;
 	}
 
+	// public SolutionAbstract ppt() {
+	// List<SolutionAbstract> voisin = solutionEnCours.retourneVoisinage();
+	// SolutionAbstract res = voisin.get(0);
+	//
+	// for (SolutionAbstract sol : voisin) {
+	//
+	// double s = problemeATraiter.evaluation(solutionEnCours);
+	// double ss = problemeATraiter.evaluation(sol);
+	// if (s >= ss) {
+	// res = sol;
+	// }
+	//
+	// }
+	// return res;
+	// }
+
 	@Override
 	/**
 	 * lance une iteration.
@@ -62,29 +78,66 @@ public class RecuitSimule extends AlgorithmeAbstract {
 	 * <li>estAccepte
 	 * </ul>
 	 */
+
 	public boolean ameliorerSolution() {
+		boolean truc = false;
+		// temperature = 1000;
+		int tour = 0;
+		while (tour < 3) {
+
+			SolutionAbstract nouvel = choisirHasard();
+
+			double actu = problemeATraiter.evaluation(solutionEnCours);
+			if (problemeATraiter.evaluation(nouvel) < actu) {
+
+				solutionEnCours = nouvel;
+				truc = true;
+			} else {
+				if (estAcceptee(nouvel)) {
+					solutionEnCours = nouvel;
+
+				}
+			}
+			tour++;
+			miseAJourTemperature();
+		}
+		// miseAJourTemperature();
+
+		// miseAJourTemperature();
+		return truc;
+	}
+
+	public boolean ameliorerSolution2() {
 		boolean truc = false;
 
 		for (int i = 0; i < 1000; i++) {
 			// System.out.println(i);
-			SolutionAbstract sol = choisirHasard(solutionEnCours.retourneVoisinage());
+			SolutionAbstract sol = choisirHasard();
 
 			double evalSol = problemeATraiter.evaluation(sol);
 			double actu = problemeATraiter.evaluation(solutionEnCours);
 
 			if (evalSol < actu) {
-				solutionEnCours = sol;
-				this.miseAJourTemperature();
-				truc = true;
-				break;
-			} else {
 				if (estAcceptee(sol)) {
 					solutionEnCours = sol;
-					this.miseAJourTemperature();
 					truc = true;
-					break;
+					// System.out.println("sedg");
+				}
+			} else {
+				double p = probaMetropolis(Math.abs(evalSol - actu));
+				if (p > Math.random()) {
+					if (estAcceptee(sol)) {
+						solutionEnCours = sol;
+						// System.out.println("bte");
+						truc = true;
+					}
 				}
 			}
+			this.miseAJourTemperature();
+
+			// if (i % 900 == 0)
+			// System.out.println(i);
+
 		}
 
 		return truc;
@@ -103,6 +156,7 @@ public class RecuitSimule extends AlgorithmeAbstract {
 
 	private void miseAJourTemperature() {
 		this.temperature = this.temperature * DELTA_TEMPERATURE;
+		// temperature--;
 	}
 
 	/**
@@ -121,6 +175,7 @@ public class RecuitSimule extends AlgorithmeAbstract {
 		vsol = problemeATraiter.evaluation(solution);
 
 		vactu = problemeATraiter.evaluation(solutionEnCours);
+		// System.out.println(Math.abs(vsol - vactu));
 
 		if (r < probaMetropolis(Math.abs(vsol - vactu))) {
 			return true;
@@ -145,6 +200,7 @@ public class RecuitSimule extends AlgorithmeAbstract {
 		double res = 0;
 
 		res = Math.exp(-((deltaValeur) / this.temperature));
+		// System.out.println(res);
 
 		return res;
 		// throw new Error("TODO"); // TODO a completer

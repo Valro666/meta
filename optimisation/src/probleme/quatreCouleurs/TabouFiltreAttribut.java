@@ -26,6 +26,8 @@ public class TabouFiltreAttribut extends TabouFiltreAbstract {
 	 */
 	public ArrayList<Integer> zonesRefusees;
 
+	ArrayList<SolutionAbstract> taboue;
+
 	/**
 	 * constructeur d'une liste taboue (basée sur des nums de zone)
 	 * 
@@ -37,6 +39,7 @@ public class TabouFiltreAttribut extends TabouFiltreAbstract {
 		for (int i = 0; i < taille; i++) {
 			zonesRefusees.add(-1);
 		}
+		taboue = new ArrayList<>();
 	}
 
 	@Override
@@ -64,10 +67,16 @@ public class TabouFiltreAttribut extends TabouFiltreAbstract {
 		// sinon il faut utiliser le filtre pour savoir si la solution est
 		// acceptee
 
+		if (taboue.contains(s)) {
+			return false;
+		} else {
+			return true;
+		}
+
 		// vous utiliserez la méthode chercherDifferente qui retourne la zone
 		// modifiee depuis la solution précédente
 
-		throw new Error("TODO"); // TODO  a completer
+		// throw new Error("TODO"); // TODO a completer
 
 	}
 
@@ -82,8 +91,11 @@ public class TabouFiltreAttribut extends TabouFiltreAbstract {
 		// penser à mettre à jour la derniere solution acceptee pour la
 		// prochaine utilisation du filtre
 
-		throw new Error("TODO"); // TODO  a completer
-
+		// System.out.println(taboue);
+		if (s != null)
+			if (!taboue.contains(s))
+				taboue.add(s);
+		//
 	}
 
 	/**

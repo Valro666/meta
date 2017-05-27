@@ -1,0 +1,46 @@
+package affichage;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JFrame;
+
+import projet.Monochro;
+import projet.Single;
+
+public class Fenetre extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Monochro mat;
+
+	Carre c;
+	Bouton b;
+	Info i;
+
+	public Fenetre() {
+
+		Single.getInstance();
+		Single.getInstance().mono = new Monochro(10);
+		c = new Carre();
+		b = new Bouton();
+		i = new Info();
+		// this.setPreferredSize(new Dimension(1000, 1000));
+
+		this.setTitle("MonoChrome");
+		this.setSize(400, 500);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		this.add(c, BorderLayout.CENTER);
+		this.add(b, BorderLayout.SOUTH);
+		this.add(i, BorderLayout.EAST);
+		// this.setPreferredSize(new Dimension(1000, 1000));
+		this.setSize(1000, 1000);
+	}
+
+}

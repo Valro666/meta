@@ -1,0 +1,61 @@
+package affichage;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import projet.Monochro;
+import projet.Single;
+
+public class Bouton extends JPanel implements Observer {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Monochro mono;
+	JButton tm = new JButton("alea");
+	JButton tim = new JButton("voisin");
+
+	public Bouton() {
+		mono = Single.getInstance().mono;
+		mono.addObserver(this);
+		Single.getInstance().mono.addObserver(this);
+		tm.addActionListener(new rand());
+		tim.addActionListener(new voisin());
+		this.add(tm);
+		this.add(tim);
+
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		mono = Single.getInstance().mono;
+	}
+
+	public class rand implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			mono.remplir();
+			Single.getInstance().histo(mono.valeur());
+			// System.out.println(mono.valeur());
+		}
+	}
+
+	public class voisin implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			//mono.remplir();
+			int x = 0;//(int) (Math.random() * (mono.size() - 2));
+			int y = 0;//(int) (Math.random() * (mono.size() - 2));
+			//Monochro aze = mono.aleration(x, y);
+			mono = mono.aleration(x, y);
+			System.out.println(aze.valeur());
+			Single.getInstance().histo(mono.valeur());
+			// System.out.println(mono.valeur());
+		}
+	}
+}

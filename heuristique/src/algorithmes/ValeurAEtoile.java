@@ -29,7 +29,7 @@ public class ValeurAEtoile implements Comparable<ValeurAEtoile> {
 	public String toString()
 	{
 		String r="";
-		r+=solutionStockee+" , h: "+heuristiqueEstimee+" , max:"+valeurEstimee;
+		r+=solutionStockee+" , heuristiqueEstimee: "+heuristiqueEstimee+" , max:"+valeurEstimee;
 		return(r);
 	}
 }

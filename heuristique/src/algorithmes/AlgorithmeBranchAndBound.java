@@ -50,25 +50,63 @@ public class AlgorithmeBranchAndBound extends AlgorithmeParcoursLargeurFiltre {
 
 	}
 
+	SolutionPartielle meilleur() {
+
+		if (liste.size() == 1) {
+			SolutionPartielle tmp = ouvert.get(0);
+			ouvert.remove(tmp);
+			return tmp;
+
+		}
+
+		SolutionPartielle tmp = ouvert.get(0);
+
+		for (int i = 0; i < ouvert.size(); i++) {
+			if (problemeAResoudre.evaluer(tmp) > problemeAResoudre.evaluer(ouvert.get(i))) {
+				tmp = ouvert.get(i);
+			}
+		}
+		ouvert.remove(tmp);
+		return tmp;
+	}
+
+	boolean contien(SolutionPartielle a) {
+
+		for (SolutionPartielle truc : liste) {
+			if (problemeAResoudre.evaluer(truc) == problemeAResoudre.evaluer(a)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	ArrayList<SolutionPartielle> ouvert = new ArrayList<SolutionPartielle>();
+
 	void bidule(SolutionPartielle solutionInitiale) {
 
 		ArrayList<SolutionPartielle> al = new ArrayList<SolutionPartielle>();
+		// ArrayList<SolutionPartielle> fermer = new
+		// ArrayList<SolutionPartielle>();
 
-		for (SolutionPartielle a : (solutionInitiale.solutionsVoisines())) {
-			// if (!a.invalide()) {
-			al.add(a);
-			// }
-		}
+		ouvert.add(solutionInitiale);
 
-		this.filtrerGlobal(al);
-
-		for (SolutionPartielle a : al) {
-			// if (!a.invalide()) {
-			liste.add(a);
-			bidule(a);
+		int tour = 0;
+		while (ouvert.size() != 0) {
 			this.compteur++;
-			// }
+			// System.out.println("gred");
+			SolutionPartielle tmp = meilleur();
+			liste.add(tmp);
+
+			SolutionPartielle[] tab = tmp.solutionsVoisines();
+
+			for (SolutionPartielle a : tab) {
+				if (!liste.contains(a))
+					if (problemeAResoudre.evaluer(a) >= problemeAResoudre.evaluer(tmp)) {
+						ouvert.add(a);
+					}
+			}
+			tour++;
 		}
 	}
-
 }

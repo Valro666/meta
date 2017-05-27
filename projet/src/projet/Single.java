@@ -1,0 +1,38 @@
+package projet;
+
+import java.util.ArrayList;
+
+public class Single {
+	private static volatile Single instance = null;
+
+	public final static Single getInstance() {
+		if (Single.instance == null) {
+			synchronized (Single.class) {
+				if (Single.instance == null) {
+					Single.instance = new Single();
+				}
+			}
+		}
+		// getInstance().historique = new ArrayList<Integer>();
+		// getInstance().historique.add(0);
+
+		return Single.instance;
+
+	}
+
+	public void histo(int i) {
+		
+		if(historique.size()==0){
+			historique.add(0);
+		}
+		
+		historique.add(i);
+		if (historique.size() > 10) {
+			historique.remove(0);
+		}
+	}
+
+	public Monochro mono;
+	public ArrayList<Integer> historique = new ArrayList<Integer>();
+
+}

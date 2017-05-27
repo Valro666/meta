@@ -1,0 +1,33 @@
+package affichage;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+
+import projet.Monochro;
+
+public class Fenetre extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Monochro mat;
+
+	Carre c;
+
+	public Fenetre() {
+
+		mat = new Monochro(10);
+		c = new Carre(mat);
+
+		this.setTitle("MonoChrome");
+		this.setSize(400, 500);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		
+		this.add(c,BorderLayout.CENTER);
+	}
+
+}

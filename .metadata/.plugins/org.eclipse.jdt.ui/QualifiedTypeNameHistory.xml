@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="algorithmes.AlgorithmeBranchAndBound"/>
-<fullyQualifiedTypeName name="generic.SolutionPartielle"/>
-<fullyQualifiedTypeName name="algorithmes.ValeurAEtoile"/>
-<fullyQualifiedTypeName name="generic.SolutionAbstract"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="algogenetique.Fitness"/>
 <fullyQualifiedTypeName name="algogenetique.Individu"/>
+<fullyQualifiedTypeName name="algorithmes.ValeurAEtoile"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="probleme.TSP.SolutionTSP"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="generic.SolutionAbstract"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="generic.SolutionPartielle"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="projet.Monochro"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+<fullyQualifiedTypeName name="java.util.Observer"/>
+<fullyQualifiedTypeName name="java.awt.Dimension"/>
+<fullyQualifiedTypeName name="java.awt.LayoutManager"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="projet.Single"/>
 </qualifiedTypeNameHistroy>
