@@ -1,0 +1,66 @@
+package projet;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Genetique {
+
+	public List<Monochro> parent = new ArrayList<Monochro>();
+	public List<Monochro> enfant = new ArrayList<Monochro>();
+
+	public Genetique() {
+		aleatoire(100);
+		enfant();
+	}
+
+	public void enfant() {
+		for (Monochro m : parent) {
+			enfant.add(m.aleration((int) Math.random() * 10, (int) Math.random() * 10));
+		}
+	}
+
+	public void aleatoire(int n) {
+		for (int i = 0; i < n; i++) {
+			parent.add(new Monochro(10));
+		}
+	}
+
+	public void croissement(Monochro m, Monochro o) {
+		Monochro adan = new Monochro(10);
+		Monochro eve = new Monochro(10);
+
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				if(Math.random()>0.5){
+					adan.matrice[i][j]=m.matrice[i][j];
+					eve.matrice[i][j]=o.matrice[i][j];
+				}else{
+					adan.matrice[i][j]=o.matrice[i][j];
+					eve.matrice[i][j]=m.matrice[i][j];
+				}
+			}
+		}
+
+		enfant.add(adan);
+		enfant.add(eve);
+	}
+
+	public void affichage() {
+		int tour = 0;
+		for (Monochro m : parent) {
+			System.out.print(m);
+			tour++;
+			if (tour % 25 == 0)
+				System.out.println();
+		}
+		System.out.println();
+		tour = 0;
+		for (Monochro m : enfant) {
+			System.out.print(m);
+			tour++;
+			if (tour % 25 == 0)
+				System.out.println();
+		}
+	}
+
+}

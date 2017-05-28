@@ -1,0 +1,31 @@
+package projet;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Genetique {
+	
+	public List<Monochro> parent = new ArrayList<Monochro>();
+	
+	public Genetique(){
+		parent.add(new Monochro(10));
+	}
+	
+	public void aleatoire(int n){
+		
+	}
+	
+	
+	public void tri(){
+		for(int i = 0 ; i < parent.size();i++){
+			
+		}
+	}
+	
+	public void affichage(){
+		for(Monochro m : parent){
+			System.out.print(m);
+		}
+	}
+
+}

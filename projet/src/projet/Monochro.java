@@ -1,8 +1,9 @@
 package projet;
 
+import java.util.Comparator;
 import java.util.Observable;
 
-public class Monochro extends Observable {
+public class Monochro extends Observable implements Comparable<Monochro> {
 
 	public int[][] matrice;
 
@@ -19,6 +20,10 @@ public class Monochro extends Observable {
 		}
 	}
 
+	public void mutation() {
+		aleration((int) (Math.random() * 9), (int) (Math.random() * 9));
+	}
+
 	public Monochro aleration(int x, int y) {
 
 		Monochro m = new Monochro(size());
@@ -29,7 +34,7 @@ public class Monochro extends Observable {
 			}
 		}
 
-		int taille = (int) (Math.random() * limite(x, y) );
+		int taille = (int) (Math.random() * limite(x, y));
 		if (taille == 0) {
 			taille = 1;
 		}
@@ -66,6 +71,16 @@ public class Monochro extends Observable {
 
 	public int get(int x, int y) {
 		return matrice[x][y];
+	}
+
+	public boolean meme(Monochro m) {
+		for (int i = 0; i < matrice.length; i++) {
+			for (int j = 0; j < matrice.length; j++) {
+				if (matrice[i][j] != m.matrice[i][j])
+					return false;
+			}
+		}
+		return true;
 	}
 
 	public void set(int x, int y, int val) {
@@ -118,6 +133,29 @@ public class Monochro extends Observable {
 			}
 		}
 		return val;
+	}
+
+	public String toString() {
+		return valeur() + " ";
+	}
+
+	@Override
+	public int compareTo(Monochro a) {
+		// TODO Auto-generated method stub
+
+		if (valeur() == a.valeur()) {
+			return 0;
+		}
+
+		if (valeur() > a.valeur()) {
+			return 1;
+		}
+
+		if (valeur() < a.valeur()) {
+			return -1;
+		}
+
+		return valeur();
 	}
 
 }

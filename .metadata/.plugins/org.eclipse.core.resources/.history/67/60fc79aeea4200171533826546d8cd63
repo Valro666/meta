@@ -1,0 +1,16 @@
+import java.util.Collections;
+import java.util.List;
+
+import projet.Genetique;
+import projet.Monochro;
+
+public class exec {
+	public static void main(String[] args) {
+		//new Fenetre();
+		
+		Genetique gen = new Genetique();
+		
+		Collections.sort( gen.parent);
+		
+	}
+}

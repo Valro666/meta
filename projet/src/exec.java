@@ -1,7 +1,22 @@
-import affichage.Fenetre;
+import java.util.Collections;
+
+import projet.Genetique;
 
 public class exec {
 	public static void main(String[] args) {
-		new Fenetre();
+		// new Fenetre();
+
+		Genetique gen = new Genetique();
+
+		 while (!gen.fin()) {
+		// Collections.sort(gen.parent);
+		gen.evaluation();
+		gen.elagage();
+		gen.enfant();
+		gen.populace();
+		//gen.elagage();
+		 }
+
+		gen.evaluation();
 	}
 }

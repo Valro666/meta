@@ -1,0 +1,20 @@
+package projet;
+
+import java.util.ArrayList;
+
+public class Genetique {
+	
+	ArrayList<Monochro> parent = new ArrayList<Monochro>();
+	
+	public Genetique(){
+		parent.add(new Monochro(10));
+	}
+	
+	
+	public void tri(){
+		for(int i = 0 ; i < parent.size();i++){
+			
+		}
+	}
+
+}

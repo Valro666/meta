@@ -1,0 +1,134 @@
+package projet;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Genetique {
+
+	public List<Monochro> parent = new ArrayList<Monochro>();
+	public List<Monochro> enfant = new ArrayList<Monochro>();
+
+	public Genetique() {
+		aleatoire(100);
+		// enfant();
+	}
+
+	public boolean fin() {
+		if (parent.get(0).valeur() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void evaluation() {
+		Collections.sort(parent);
+		affichage();
+	}
+
+	public void populace() {
+		for (Monochro m : enfant) {
+			parent.add(m);
+		}
+		enfant.clear();
+	}
+
+	public void elagage() {
+
+		List<Monochro> supp = new ArrayList<Monochro>();
+
+		Collections.sort(parent);
+
+		for (Monochro m : parent) {
+			int a = 0;
+			for (Monochro o : parent) {
+				if (m.meme(o)){
+					a++;
+					if(a>1){
+						supp.add(m);
+					}
+				}
+			}
+		}
+
+		parent.removeAll(supp);
+
+		int nombre = parent.size() - 100;
+
+		if (nombre > 0) {
+			for (int i = 0; i < nombre; i++) {
+				parent.remove(100);
+			}
+		}
+
+	}
+
+	public void enfant() {
+		for (int i = 0; i < 50; i++) {
+			croisement(parent.get(random(10)), parent.get(random(10)));
+		}
+	}
+
+	int random(int i) {
+		return (int) (Math.random() * i);
+	}
+
+	public void aleatoire(int n) {
+		for (int i = 0; i < n; i++) {
+			parent.add(new Monochro(10));
+		}
+	}
+
+	public void croisement(Monochro m, Monochro o) {
+		Monochro adan = new Monochro(10);
+		Monochro eve = new Monochro(10);
+
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				if (random(1) > 0.5) {
+					adan.matrice[i][j] = m.matrice[i][j];
+					eve.matrice[i][j] = o.matrice[i][j];
+				} else {
+					adan.matrice[i][j] = o.matrice[i][j];
+					eve.matrice[i][j] = m.matrice[i][j];
+				}
+			}
+		}
+
+		if (Math.random() < .5) {
+			adan.mutation();
+			// adan.mutation();
+			// adan.mutation();
+		}
+
+		if (Math.random() < .5) {
+			eve.mutation();
+			// eve.mutation();
+			// eve.mutation();
+		}
+
+		enfant.add(adan);
+		enfant.add(eve);
+	}
+
+	public void affichage() {
+		int tour = 0;
+		System.out.println("parent\n");
+		for (Monochro m : parent) {
+			System.out.print(m);
+			tour++;
+			if (tour % 25 == 0)
+				System.out.println();
+		}
+		System.out.println("enfant \n");
+		tour = 0;
+		for (Monochro m : enfant) {
+			System.out.print(m);
+			tour++;
+			if (tour % 25 == 0)
+				System.out.println();
+		}
+	}
+
+}
